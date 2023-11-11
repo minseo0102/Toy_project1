@@ -25,7 +25,7 @@ public class CloudVendorServiceImpl implements CloudVendorService{
     @Override
     public String updateCloudVendor(CloudVendor cloudVendor) {
         //more Business logic
-        cloudVendorRepository.save(cloudVendor);
+        cloudVendorRepository.save(cloudVendor);//jpa의 save 메서드의 경우, 이미 있는 값에 대해서는 변경된 내용만 추적해서 수정합니다
         return "Success";
     }
 
