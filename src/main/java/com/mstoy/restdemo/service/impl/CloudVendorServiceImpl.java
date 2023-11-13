@@ -1,5 +1,6 @@
 package com.mstoy.restdemo.service.impl;
 
+import com.mstoy.restdemo.exception.CloudVendorNotFoundException;
 import com.mstoy.restdemo.model.CloudVendor;
 import com.mstoy.restdemo.repository.CloudVendorRepository;
 import com.mstoy.restdemo.service.CloudVendorService;
@@ -39,6 +40,8 @@ public class CloudVendorServiceImpl implements CloudVendorService{
     @Override
     public CloudVendor getCloudVendor(String cloudVendorId) {
         //more Business logic
+        if(cloudVendorRepository.findById(cloudVendorId).isEmpty())
+            throw new CloudVendorNotFoundException("Requested Cloud Vendor does not exist");
         return cloudVendorRepository.findById(cloudVendorId).get();
     }
 
