@@ -1,7 +1,10 @@
 package com.mstoy.restdemo.controller;
 
 import com.mstoy.restdemo.model.CloudVendor;
+import com.mstoy.restdemo.response.ResponseHandler;
 import com.mstoy.restdemo.service.CloudVendorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +20,10 @@ public class CloudVendorController {
 
     //Read Specific Cloud Vendor Details
     @GetMapping("{vendorId}")
-    public CloudVendor getCloudVendorDetails(@PathVariable("vendorId") String vendorId)//위 url 경로로부터 값을 받아와서 사용하므로 어노테이션 추가
+    public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId)//위 url 경로로부터 값을 받아와서 사용하므로 어노테이션 추가
     {
-        return cloudVendorService.getCloudVendor(vendorId);
+        return ResponseHandler.responseBuilder("Requested Vendor Details are given here",
+                HttpStatus.OK, cloudVendorService.getCloudVendor(vendorId));
     }
 
     //Read All Cloud Vendor Details
