@@ -82,8 +82,19 @@ class CloudVendorServiceImplTest {
                 .isEqualTo(cloudVendor.getVendorName());
     }
 
-    //testGetByVendorName 나중에 추가할 것, 실제 main의 service에도 메서드를 추가하고 test를 수행할것
+    //testGetByVendorName 나중에 추가할 것, 실제 main의 service에도 메서드를 추가하고 test를 수행할것 =>OK!!!
+    @Test
+    void testGetByVendorName(){
+        mock(CloudVendor.class);
+        mock(CloudVendorRepository.class);
 
+        when(cloudVendorRepository.findByVendorName("Amazon")).thenReturn(
+                new ArrayList<CloudVendor>(Collections.singleton(cloudVendor))
+        );
+
+        assertThat(cloudVendorService.getByVendorName("Amazon").get(0).getVendorId())
+                .isEqualTo(cloudVendor.getVendorId());
+    }
     @Test
     void testGetAllCloudVendors() {
         mock(CloudVendor.class);

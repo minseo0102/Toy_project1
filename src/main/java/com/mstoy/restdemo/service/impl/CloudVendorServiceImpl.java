@@ -51,4 +51,8 @@ public class CloudVendorServiceImpl implements CloudVendorService{
         return cloudVendorRepository.findAll();
     }//이 안에 있는 모든 메서드를 implements 하기 전에는 빨간줄이 떠있음
 
+    @Override
+    public List<CloudVendor> getByVendorName(String vendorName){
+        return cloudVendorRepository.findByVendorName(vendorName);
+    }
 }
