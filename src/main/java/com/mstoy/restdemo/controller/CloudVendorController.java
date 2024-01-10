@@ -28,14 +28,14 @@ public class CloudVendorController {
 
     //Read All Cloud Vendor Details
     @GetMapping
-    public List<CloudVendor> getCloudVendorDetails()//위 url 경로로부터 값을 받아와서 사용하므로 어노테이션 추가
+    public List<CloudVendor> getAllCloudVendorDetails()//위 url 경로로부터 값을 받아와서 사용하므로 어노테이션 추가
     {
         return cloudVendorService.getAllCloudVendors();
     }
 
     //Create Cloud Vendor
     @PostMapping
-    public String postCloudVendorDetails(@RequestBody CloudVendor cloudVendor)
+    public String createCloudVendorDetails(@RequestBody CloudVendor cloudVendor)
     {
         cloudVendorService.createCloudVendor(cloudVendor);
         return "Cloud Vendor Created Successfully";
