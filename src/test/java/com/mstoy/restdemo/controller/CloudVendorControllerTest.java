@@ -28,7 +28,7 @@ class CloudVendorControllerTest {
 
     @Autowired
     private MockMvc mockMvc; //mock mvc를 test에 주입해준다
-    //controller 레이어는 service 레이어와 통신하므로 모의 service 만들기
+    //controller 레이어는 service 레이어와 통신하므로 모의 service 만들기DD
     @MockBean
     private CloudVendorService cloudVendorService;
     CloudVendor cloudVendorOne;
