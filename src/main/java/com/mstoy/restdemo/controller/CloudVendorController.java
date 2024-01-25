@@ -19,7 +19,7 @@ public class CloudVendorController {
     }
 
     //Read Specific Cloud Vendor Details
-    @GetMapping("{vendorId}")
+    @GetMapping("/{vendorId}")
     public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId)//위 url 경로로부터 값을 받아와서 사용하므로 어노테이션 추가
     {
         return ResponseHandler.responseBuilder("Requested Vendor Details are given here",
@@ -27,14 +27,14 @@ public class CloudVendorController {
     }
 
     //Read All Cloud Vendor Details
-    @GetMapping
+    @GetMapping("/")
     public List<CloudVendor> getAllCloudVendorDetails()//위 url 경로로부터 값을 받아와서 사용하므로 어노테이션 추가
     {
         return cloudVendorService.getAllCloudVendors();
     }
 
     //Create Cloud Vendor
-    @PostMapping
+    @PostMapping("/")
     public String createCloudVendorDetails(@RequestBody CloudVendor cloudVendor)
     {
         cloudVendorService.createCloudVendor(cloudVendor);
@@ -42,14 +42,14 @@ public class CloudVendorController {
     }
 
     //Update Cloud Vendor
-    @PutMapping//수정이라 하더라도 특정 id 안받아도됨-> jpa의 save 메서드가 이미 있는 값에 대해서는 변경을 하고, 없으면 삽입을 하는 두가지 역할을 수행하기 때문
+    @PutMapping("/")//수정이라 하더라도 특정 id 안받아도됨-> jpa의 save 메서드가 이미 있는 값에 대해서는 변경을 하고, 없으면 삽입을 하는 두가지 역할을 수행하기 때문
     public String updateCloudVendorDetails(@RequestBody CloudVendor cloudVendor)
     {
         cloudVendorService.updateCloudVendor(cloudVendor);
         return "Cloud Vendor Updated Successfully";
     }
 
-    @DeleteMapping("{VendorId}")
+    @DeleteMapping("/{VendorId}")
     public String deleteCloudVendorDetails(@PathVariable("VendorId") String vendorId)
     {
         cloudVendorService.deleteCloudVendor(vendorId);
