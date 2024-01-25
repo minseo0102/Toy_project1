@@ -3,6 +3,7 @@ package com.mstoy.restdemo.controller;
 import com.mstoy.restdemo.model.CloudVendor;
 import com.mstoy.restdemo.response.ResponseHandler;
 import com.mstoy.restdemo.service.CloudVendorService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,8 @@ public class CloudVendorController {
 
     //Read Specific Cloud Vendor Details
     @GetMapping("/{vendorId}")
+    @ApiOperation(value = "cloud vendor id", notes = "Provide cloud vendor details",
+    response = ResponseEntity.class)
     public ResponseEntity<Object> getCloudVendorDetails(@PathVariable("vendorId") String vendorId)//위 url 경로로부터 값을 받아와서 사용하므로 어노테이션 추가
     {
         return ResponseHandler.responseBuilder("Requested Vendor Details are given here",
